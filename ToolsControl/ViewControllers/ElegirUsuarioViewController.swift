@@ -1,8 +1,8 @@
 //
-//  ElegirUsuarioViewController.swift
+//  ElegirUsuarioMensajeViewController.swift
 //  ToolsControl
 //
-//  Created by Tecsup on 27/05/19.
+//  Created by Tecsup on 29/05/19.
 //  Copyright © 2019 Glenda. All rights reserved.
 //
 
@@ -12,27 +12,28 @@ import SDWebImage
 
 class ElegirUsuarioViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    @IBOutlet weak var listaUsuarios: UITableView!
+    @IBOutlet weak var tableView2: UITableView!
     
     var usuarios:[Usuario] = []
+    
     var usuarioselect = ""
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        listaUsuarios.delegate = self
-        listaUsuarios.dataSource = self
+        tableView2.delegate = self
+        tableView2.dataSource = self
         Database.database().reference().child("usuarios").observe(DataEventType.childAdded,
         with: {(snapshot) in
-            print(snapshot)
-            
-            let usuario = Usuario()
-            usuario.email = (snapshot.value as! NSDictionary)["email"] as! String
-            usuario.perfilURL = (snapshot.value as! NSDictionary)["imagenURL"] as! String
-            usuario.uid = snapshot.key
-            if usuario.email != Auth.auth().currentUser?.email{
+        print(snapshot)
+                                                                    
+        let usuario = Usuario()
+        usuario.email = (snapshot.value as! NSDictionary)["email"] as! String
+        usuario.uid = snapshot.key
+        if usuario.email != Auth.auth().currentUser?.email{
                 self.usuarios.append(usuario)
-            }
-            self.listaUsuarios.reloadData()
+        }
+        self.tableView2.reloadData()
         })
     }
     
@@ -51,13 +52,13 @@ class ElegirUsuarioViewController: UIViewController, UITableViewDataSource, UITa
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let recursoSeleccionado = usuarios[indexPath.row]
         self.usuarioselect = recursoSeleccionado.uid
-        self.performSegue(withIdentifier: "enviarimagen", sender: nil)
+        self.performSegue(withIdentifier: "elegirTipo", sender: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "enviarimagen"{
-            let sendImageVC = segue.destination as! imagenViewController
-            sendImageVC.usuarioID = self.usuarioselect
+        if segue.identifier == "elegirTipo"{
+            let sendImageVC = segue.destination as! TiposViewController
+            sendImageVC.usuarioenviar = self.usuarioselect
         }
     }
 

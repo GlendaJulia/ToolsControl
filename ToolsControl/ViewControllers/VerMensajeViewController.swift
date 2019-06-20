@@ -18,7 +18,7 @@ class VerMensajeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        mensajeText.text = "Mensaje: " + snap2.mensaje
+//        mensajeText.text = "Mensaje: " + snap2.mensaje
         fechaLabel.text = "Fecha: " + snap2.fecha
         Database.database().reference().child("usuarios").child((Auth.auth().currentUser?.uid)!).child("snaps").child(self.snap2.id).child("estado").setValue("T")
     }

@@ -9,9 +9,15 @@
 import Foundation
 
 class Usuario{
+    var nombre = ""
+    var apellido = ""
+    var edad = ""
+    var tipo = ""
+    var ocupacion = ""
+    var dni = ""
     var email = ""
     var uid = ""
-    var user = ""
     var perfilID = ""
     var perfilURL = ""
+    var password = ""
 }

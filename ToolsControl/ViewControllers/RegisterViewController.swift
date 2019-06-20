@@ -14,10 +14,17 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
 
     
     @IBOutlet weak var fotoPerfil: UIImageView!
+    @IBOutlet weak var nombreTextField: UITextField!
+    @IBOutlet weak var apellidoTextField: UITextField!
+    @IBOutlet weak var tipoTextField: UITextField!
+    @IBOutlet weak var ocupacionTextField: UITextField!
+    @IBOutlet weak var edadTextField: UITextField!
+    @IBOutlet weak var dniTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var correoTextField: UITextField!
-
+    @IBOutlet weak var password2TextField: UITextField!
+    @IBOutlet weak var btnCrear: UIButton!
+    
     var perfilPicker = UIImagePickerController()
     var perfilID = NSUUID().uuidString
     var urlperfil = ""
@@ -30,54 +37,69 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
         perfilPicker.delegate = self
         emailTextField.text = email
         passwordTextField.text = password
+        btnCrear.isEnabled = false
     }
 
     @IBAction func RegisterHandler(_ sender: Any) {
-        let perfilesFolder = Storage.storage().reference().child("perfiles")
-        let perfilData = fotoPerfil.image?.jpegData(compressionQuality: 0.50)
-        let cargarPerfil = perfilesFolder.child("\(perfilID).jpg")
         
-        Auth.auth().createUser(withEmail: self.emailTextField.text!, password: self.passwordTextField.text!, completion: { (user, error) in
-            print("Intentando crear usuario")
-            if error != nil{
-                print("Se presento el siguiente error al intentar crear un usuario: \(error)")
-                let alerta = UIAlertController(title: "Error", message: "Se presento el siguiente error al intentar crear un usuario: \(error)", preferredStyle: .alert)
-                let btnOK = UIAlertAction(title: "Aceptar", style: .default, handler: nil)
-                
-                alerta.addAction(btnOK)
-                self.present(alerta, animated: true, completion: nil)
-            }else{
-                print("El usuario fue creado Exitosamente")
-                cargarPerfil.putData(perfilData!, metadata: nil) { (metadata, error) in
-                    if error != nil{
-                        self.mostrarAlerta(titulo: "Error", mensaje: "Se produjo un error al subir la imagen. Verifique su conexion a internet y vuelva a intentarlo.", accion: "Aceptar")
-                        print("Ocurrio un error al subir la imagen: \(error)")
-                        return
-                    }else{
-                        cargarPerfil.downloadURL(completion: {(url, error) in
-                            guard let enlaceURL = url else{
-                                self.mostrarAlerta(titulo: "Error", mensaje: "Se produjo un error al obtener informacion de imagen.", accion: "Cancelar")
-                                print("Ocurrio un error al obtener la informacion de imagen \(error)")
-                                return
-                            }
-                            self.urlperfil = (url?.absoluteString)!
-                            let userr = ["email" : user?.user.email, "contraseña" : self.passwordTextField.text!, "imagenURL": (url?.absoluteString)!, "imagenID":self.perfilID, "user": self.correoTextField.text!]
-                            Database.database().reference().child("usuarios").child(user!.user.uid).setValue(userr)
-                        })
-                    }
-                }
-                
-                
-                let alerta = UIAlertController(title: "Creacion de Usuario", message: "Usuario: \(self.emailTextField.text!) se creo correctamente!", preferredStyle: .alert)
-                let btnOK = UIAlertAction(title: "Iniciar Sesion", style: .default, handler: { (UIAlertAction) in
+        if passwordTextField.text == password2TextField.text{
+            
+            let perfilesFolder = Storage.storage().reference().child("perfiles")
+            let perfilData = fotoPerfil.image?.jpegData(compressionQuality: 0.50)
+            let cargarPerfil = perfilesFolder.child("\(perfilID).jpg")
+            
+            Auth.auth().createUser(withEmail: self.emailTextField.text!, password: self.passwordTextField.text!, completion: { (user, error) in
+                print("Intentando crear usuario")
+                if error != nil{
+                    print("Se presento el siguiente error al intentar crear un usuario: \(error)")
+                    let alerta = UIAlertController(title: "Error", message: "Se presento el siguiente error al intentar crear un usuario: \(error)", preferredStyle: .alert)
+                    let btnOK = UIAlertAction(title: "Aceptar", style: .default, handler: nil)
                     
-                    self.performSegue(withIdentifier: "seguelogin", sender: nil)
-                })
+                    alerta.addAction(btnOK)
+                    self.present(alerta, animated: true, completion: nil)
+                }else{
+                    print("El usuario fue creado Exitosamente")
+                    cargarPerfil.putData(perfilData!, metadata: nil) { (metadata, error) in
+                        if error != nil{
+                            self.mostrarAlerta(titulo: "Error", mensaje: "Se produjo un error al subir la imagen. Verifique su conexion a internet y vuelva a intentarlo.", accion: "Aceptar")
+                            print("Ocurrio un error al subir la imagen: \(error)")
+                            return
+                        }else{
+                            cargarPerfil.downloadURL(completion: {(url, error) in
+                                guard let enlaceURL = url else{
+                                    self.mostrarAlerta(titulo: "Error", mensaje: "Se produjo un error al obtener informacion de imagen.", accion: "Cancelar")
+                                    print("Ocurrio un error al obtener la informacion de imagen \(error)")
+                                    return
+                                }
+                                self.urlperfil = (url?.absoluteString)!
+                                let userr = ["email" : user?.user.email, "contraseña" : self.passwordTextField.text!, "imagenURL": (url?.absoluteString)!, "imagenID":self.perfilID, "tipo": self.tipoTextField.text!, "nombres": self.nombreTextField.text!, "apellidos": self.apellidoTextField.text!, "DNI": self.dniTextField.text!, "ocupacion": self.ocupacionTextField.text!, "edad": self.edadTextField.text!]
+                                Database.database().reference().child("usuarios").child(user!.user.uid).setValue(userr)
+                            })
+                        }
+                    }
+                    
+                    
+                    let alerta = UIAlertController(title: "Creacion de Usuario", message: "Usuario: \(self.emailTextField.text!) se creo correctamente!", preferredStyle: .alert)
+                    let btnOK = UIAlertAction(title: "Iniciar Sesion", style: .default, handler: { (UIAlertAction) in
+                        
+                        self.performSegue(withIdentifier: "seguelogin", sender: nil)
+                    })
+                    
+                    alerta.addAction(btnOK)
+                    self.present(alerta, animated: true, completion: nil)
+                }
+            })
+        }else{
+            let alerta = UIAlertController(title: "Error", message: "Las contraseñas no coinciden. Intentelo nuevamente.", preferredStyle: .alert)
+            let btnOK = UIAlertAction(title: "Intentar de nuevo", style: .default, handler: { (UIAlertAction) in
                 
-                alerta.addAction(btnOK)
-                self.present(alerta, animated: true, completion: nil)
-            }
-        })
+                self.passwordTextField.text = ""
+                self.password2TextField.text = ""
+            })
+            
+            alerta.addAction(btnOK)
+            self.present(alerta, animated: true, completion: nil)
+        }
         
     }
     
@@ -106,6 +128,7 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
         fotoPerfil.image = image
         fotoPerfil.backgroundColor = UIColor.clear
         perfilPicker.dismiss(animated: true, completion: nil)
+        btnCrear.isEnabled = true
     }
     
     func mostrarAlerta(titulo: String, mensaje: String, accion: String) {
@@ -120,4 +143,6 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
         loginVC.mail = emailTextField.text!
         loginVC.pass = passwordTextField.text!
     }
+    
+    
 }

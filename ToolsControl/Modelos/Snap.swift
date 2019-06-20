@@ -9,11 +9,12 @@
 import Foundation
 class Snap {
     var imagenURL = ""
-    var mensaje = ""
-    var from = ""
+    var nombre = ""
+    var responsable = ""
     var id = ""
-    var imagenID = ""
     var tipo = ""
     var fecha = ""
     var estado = ""
+    var condiciones = ""
+    var herramientaID = ""
 }

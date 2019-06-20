@@ -17,6 +17,7 @@ class iniciarSesionViewController: UIViewController {
     
     var mail = ""
     var pass = ""
+    var tipo = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +42,15 @@ class iniciarSesionViewController: UIViewController {
                 self.present(alerta, animated: true, completion: nil)
             }else{
                 print("Inicio de sesion exitoso")
-                self.performSegue(withIdentifier: "iniciarsesionsegue", sender: nil)
+                
+                Database.database().reference().child("usuarios").child((Auth.auth().currentUser?.uid)!).child("tipo").observeSingleEvent(of: .value, with:{(snapshot) in
+                    self.tipo = snapshot.value as! String
+                    if self.tipo == "administrador"{
+                        self.performSegue(withIdentifier: "iniciarsesionadminsegue", sender: nil)
+                    }else if self.tipo == "empleado"{
+                        self.performSegue(withIdentifier: "iniciarsesionempleadosegue", sender: nil)
+                    }
+                })
             }
         }
     }

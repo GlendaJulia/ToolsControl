@@ -8,10 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		4AAD0B5B95CFF54161BEDA87 /* Pods_ToolsControl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3918E24A789BDBF72DCC19C1 /* Pods_ToolsControl.framework */; };
+		CD10264022BAF7F8000F765F /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CD10263F22BAF7F8000F765F /* Icon.png */; };
+		CD4B9D1C22B99A4800DE0945 /* TiposViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4B9D1B22B99A4800DE0945 /* TiposViewController.swift */; };
 		CD8C5FEB22A01892002DD236 /* Snap.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8C5FEA22A01892002DD236 /* Snap.swift */; };
 		CD8C5FED22A0238E002DD236 /* SubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8C5FEC22A0238E002DD236 /* SubViewController.swift */; };
-		CD8C5FEF22A04011002DD236 /* VerImagenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8C5FEE22A04011002DD236 /* VerImagenViewController.swift */; };
-		CD8C5FF122A04021002DD236 /* VerMensajeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8C5FF022A04021002DD236 /* VerMensajeViewController.swift */; };
+		CD8C5FEF22A04011002DD236 /* VerPrestamoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8C5FEE22A04011002DD236 /* VerPrestamoViewController.swift */; };
 		CD913037229C486D00BE7745 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD913036229C486D00BE7745 /* AppDelegate.swift */; };
 		CD913039229C486D00BE7745 /* iniciarSesionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD913038229C486D00BE7745 /* iniciarSesionViewController.swift */; };
 		CD91303C229C486D00BE7745 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD91303A229C486D00BE7745 /* Main.storyboard */; };
@@ -19,22 +20,25 @@
 		CD913041229C486E00BE7745 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD91303F229C486E00BE7745 /* LaunchScreen.storyboard */; };
 		CD913049229C4DFB00BE7745 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CD913048229C4DFB00BE7745 /* GoogleService-Info.plist */; };
 		CD91304C229C61FF00BE7745 /* ControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD91304B229C61FF00BE7745 /* ControlViewController.swift */; };
-		CD91304E229C66CC00BE7745 /* imagenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD91304D229C66CC00BE7745 /* imagenViewController.swift */; };
-		CD913050229C8D3300BE7745 /* ElegirUsuarioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD91304F229C8D3300BE7745 /* ElegirUsuarioViewController.swift */; };
+		CD91304E229C66CC00BE7745 /* herramientaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD91304D229C66CC00BE7745 /* herramientaViewController.swift */; };
+		CD913050229C8D3300BE7745 /* ListaHerramientasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD91304F229C8D3300BE7745 /* ListaHerramientasViewController.swift */; };
 		CDA27EFA229F09690017655F /* Usuario.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA27EF9229F09690017655F /* Usuario.swift */; };
 		CDA27EFC229F14720017655F /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA27EFB229F14720017655F /* RegisterViewController.swift */; };
-		CDA27EFE229F2E260017655F /* ElegirUsuarioMensajeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA27EFD229F2E260017655F /* ElegirUsuarioMensajeViewController.swift */; };
-		CDA27F00229F2EB60017655F /* mensajeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA27EFF229F2EB60017655F /* mensajeViewController.swift */; };
+		CDA27EFE229F2E260017655F /* ElegirUsuarioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA27EFD229F2E260017655F /* ElegirUsuarioViewController.swift */; };
+		CDA27F00229F2EB60017655F /* prestarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA27EFF229F2EB60017655F /* prestarViewController.swift */; };
+		CDB10F3622B7F09E003010B1 /* EmpleadoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB10F3522B7F09E003010B1 /* EmpleadoViewController.swift */; };
+		CDB10F3822B840CA003010B1 /* Herramienta.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB10F3722B840CA003010B1 /* Herramienta.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		37CAE90E88E85AE19F6F9A60 /* Pods-ToolsControl.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToolsControl.debug.xcconfig"; path = "Target Support Files/Pods-ToolsControl/Pods-ToolsControl.debug.xcconfig"; sourceTree = "<group>"; };
 		3918E24A789BDBF72DCC19C1 /* Pods_ToolsControl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToolsControl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		607F573A6A5C45BA12631E39 /* Pods-ToolsControl.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToolsControl.release.xcconfig"; path = "Target Support Files/Pods-ToolsControl/Pods-ToolsControl.release.xcconfig"; sourceTree = "<group>"; };
+		CD10263F22BAF7F8000F765F /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		CD4B9D1B22B99A4800DE0945 /* TiposViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiposViewController.swift; sourceTree = "<group>"; };
 		CD8C5FEA22A01892002DD236 /* Snap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Snap.swift; sourceTree = "<group>"; };
 		CD8C5FEC22A0238E002DD236 /* SubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubViewController.swift; sourceTree = "<group>"; };
-		CD8C5FEE22A04011002DD236 /* VerImagenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerImagenViewController.swift; sourceTree = "<group>"; };
-		CD8C5FF022A04021002DD236 /* VerMensajeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerMensajeViewController.swift; sourceTree = "<group>"; };
+		CD8C5FEE22A04011002DD236 /* VerPrestamoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerPrestamoViewController.swift; sourceTree = "<group>"; };
 		CD913033229C486D00BE7745 /* ToolsControl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToolsControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD913036229C486D00BE7745 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CD913038229C486D00BE7745 /* iniciarSesionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iniciarSesionViewController.swift; sourceTree = "<group>"; };
@@ -45,12 +49,14 @@
 		CD913048229C4DFB00BE7745 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CD91304A229C5A5800BE7745 /* ToolsControl.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ToolsControl.entitlements; sourceTree = "<group>"; };
 		CD91304B229C61FF00BE7745 /* ControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlViewController.swift; sourceTree = "<group>"; };
-		CD91304D229C66CC00BE7745 /* imagenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = imagenViewController.swift; sourceTree = "<group>"; };
-		CD91304F229C8D3300BE7745 /* ElegirUsuarioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElegirUsuarioViewController.swift; sourceTree = "<group>"; };
+		CD91304D229C66CC00BE7745 /* herramientaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = herramientaViewController.swift; sourceTree = "<group>"; };
+		CD91304F229C8D3300BE7745 /* ListaHerramientasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListaHerramientasViewController.swift; sourceTree = "<group>"; };
 		CDA27EF9229F09690017655F /* Usuario.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Usuario.swift; sourceTree = "<group>"; };
 		CDA27EFB229F14720017655F /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
-		CDA27EFD229F2E260017655F /* ElegirUsuarioMensajeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElegirUsuarioMensajeViewController.swift; sourceTree = "<group>"; };
-		CDA27EFF229F2EB60017655F /* mensajeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mensajeViewController.swift; sourceTree = "<group>"; };
+		CDA27EFD229F2E260017655F /* ElegirUsuarioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElegirUsuarioViewController.swift; sourceTree = "<group>"; };
+		CDA27EFF229F2EB60017655F /* prestarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = prestarViewController.swift; sourceTree = "<group>"; };
+		CDB10F3522B7F09E003010B1 /* EmpleadoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmpleadoViewController.swift; sourceTree = "<group>"; };
+		CDB10F3722B840CA003010B1 /* Herramienta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Herramienta.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +91,7 @@
 		CD91302A229C486D00BE7745 = {
 			isa = PBXGroup;
 			children = (
+				CD10263F22BAF7F8000F765F /* Icon.png */,
 				CD913035229C486D00BE7745 /* ToolsControl */,
 				CD913034229C486D00BE7745 /* Products */,
 				6FDD44E90E5242D5FC4F2589 /* Pods */,
@@ -121,14 +128,15 @@
 			children = (
 				CD913038229C486D00BE7745 /* iniciarSesionViewController.swift */,
 				CD91304B229C61FF00BE7745 /* ControlViewController.swift */,
-				CD91304D229C66CC00BE7745 /* imagenViewController.swift */,
-				CD91304F229C8D3300BE7745 /* ElegirUsuarioViewController.swift */,
+				CD91304D229C66CC00BE7745 /* herramientaViewController.swift */,
 				CDA27EFB229F14720017655F /* RegisterViewController.swift */,
-				CDA27EFD229F2E260017655F /* ElegirUsuarioMensajeViewController.swift */,
-				CDA27EFF229F2EB60017655F /* mensajeViewController.swift */,
+				CD91304F229C8D3300BE7745 /* ListaHerramientasViewController.swift */,
+				CDA27EFD229F2E260017655F /* ElegirUsuarioViewController.swift */,
+				CDA27EFF229F2EB60017655F /* prestarViewController.swift */,
 				CD8C5FEC22A0238E002DD236 /* SubViewController.swift */,
-				CD8C5FEE22A04011002DD236 /* VerImagenViewController.swift */,
-				CD8C5FF022A04021002DD236 /* VerMensajeViewController.swift */,
+				CD8C5FEE22A04011002DD236 /* VerPrestamoViewController.swift */,
+				CDB10F3522B7F09E003010B1 /* EmpleadoViewController.swift */,
+				CD4B9D1B22B99A4800DE0945 /* TiposViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -138,6 +146,7 @@
 			children = (
 				CDA27EF9229F09690017655F /* Usuario.swift */,
 				CD8C5FEA22A01892002DD236 /* Snap.swift */,
+				CDB10F3722B840CA003010B1 /* Herramienta.swift */,
 			);
 			path = Modelos;
 			sourceTree = "<group>";
@@ -209,6 +218,7 @@
 			files = (
 				CD913041229C486E00BE7745 /* LaunchScreen.storyboard in Resources */,
 				CD913049229C4DFB00BE7745 /* GoogleService-Info.plist in Resources */,
+				CD10264022BAF7F8000F765F /* Icon.png in Resources */,
 				CD91303E229C486E00BE7745 /* Assets.xcassets in Resources */,
 				CD91303C229C486D00BE7745 /* Main.storyboard in Resources */,
 			);
@@ -245,24 +255,11 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ToolsControl/Pods-ToolsControl-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
-				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-ToolsControl/Pods-ToolsControl-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-ToolsControl/Pods-ToolsControl-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -277,18 +274,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD913039229C486D00BE7745 /* iniciarSesionViewController.swift in Sources */,
-				CD8C5FEF22A04011002DD236 /* VerImagenViewController.swift in Sources */,
+				CD8C5FEF22A04011002DD236 /* VerPrestamoViewController.swift in Sources */,
+				CD4B9D1C22B99A4800DE0945 /* TiposViewController.swift in Sources */,
 				CD8C5FEB22A01892002DD236 /* Snap.swift in Sources */,
 				CD8C5FED22A0238E002DD236 /* SubViewController.swift in Sources */,
-				CD91304E229C66CC00BE7745 /* imagenViewController.swift in Sources */,
+				CD91304E229C66CC00BE7745 /* herramientaViewController.swift in Sources */,
 				CDA27EFC229F14720017655F /* RegisterViewController.swift in Sources */,
 				CDA27EFA229F09690017655F /* Usuario.swift in Sources */,
-				CDA27F00229F2EB60017655F /* mensajeViewController.swift in Sources */,
-				CD8C5FF122A04021002DD236 /* VerMensajeViewController.swift in Sources */,
+				CDA27F00229F2EB60017655F /* prestarViewController.swift in Sources */,
+				CDB10F3822B840CA003010B1 /* Herramienta.swift in Sources */,
 				CD91304C229C61FF00BE7745 /* ControlViewController.swift in Sources */,
-				CDA27EFE229F2E260017655F /* ElegirUsuarioMensajeViewController.swift in Sources */,
+				CDA27EFE229F2E260017655F /* ElegirUsuarioViewController.swift in Sources */,
+				CDB10F3622B7F09E003010B1 /* EmpleadoViewController.swift in Sources */,
 				CD913037229C486D00BE7745 /* AppDelegate.swift in Sources */,
-				CD913050229C8D3300BE7745 /* ElegirUsuarioViewController.swift in Sources */,
+				CD913050229C8D3300BE7745 /* ListaHerramientasViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

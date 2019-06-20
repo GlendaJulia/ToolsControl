@@ -1,26 +1,27 @@
 //
-//  SubViewController.swift
+//  EmpleadoViewController.swift
 //  ToolsControl
 //
-//  Created by Tecsup on 30/05/19.
+//  Created by Tecsup on 6/17/19.
 //  Copyright © 2019 Glenda. All rights reserved.
 //
 
 import UIKit
 import Firebase
 
-class SubViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
-
-    @IBOutlet weak var tableViewSub: UITableView!
+class EmpleadoViewController: UIViewController, UITableViewDataSource, UITableViewDelegate   {
+    
+    @IBOutlet weak var tablePrestados: UITableView!
+    
     var snaps2: [Snap] = []
     var userS = Usuario()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableViewSub.delegate = self
-        tableViewSub.dataSource = self
+        tablePrestados.delegate = self
+        tablePrestados.dataSource = self
         
-        Database.database().reference().child("usuarios").child(self.userS.uid).child("prestados").observe(DataEventType.childAdded, with: { (snapshot) in
+        Database.database().reference().child("usuarios").child((Auth.auth().currentUser?.uid)!).child("prestados").observe(DataEventType.childAdded, with: { (snapshot) in
             let snap = Snap()
             snap.nombre = (snapshot.value as! NSDictionary)["nombre"] as! String
             snap.fecha = (snapshot.value as! NSDictionary)["fecha"] as! String
@@ -31,9 +32,13 @@ class SubViewController: UIViewController, UITableViewDataSource, UITableViewDel
             snap.herramientaID = (snapshot.value as! NSDictionary)["herramientaID"] as! String
             snap.imagenURL = (snapshot.value as! NSDictionary)["imagenURL"] as! String
             self.snaps2.append(snap)
-            self.tableViewSub.reloadData()
+            self.tablePrestados.reloadData()
             
         })
+    }
+
+    @IBAction func cerrarSesion(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -58,21 +63,5 @@ class SubViewController: UIViewController, UITableViewDataSource, UITableViewDel
             }
         }
         return cell
-        
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let snap = snaps2[indexPath.row]
-        performSegue(withIdentifier: "verprestamo", sender: snap)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "verprestamo"{
-            let siguienteVC = segue.destination as! VerPrestamoViewController
-            siguienteVC.snap = sender as! Snap
-            siguienteVC.user = userS as! Usuario
-        }
-    }
-
-    
 }
