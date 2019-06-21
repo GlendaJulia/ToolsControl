@@ -27,7 +27,7 @@ class SubViewController: UIViewController, UITableViewDataSource, UITableViewDel
             snap.id = snapshot.key
             snap.estado = (snapshot.value as! NSDictionary)["estado"] as! String
             snap.responsable = (snapshot.value as! NSDictionary)["responsable"] as! String
-            snap.condiciones = (snapshot.value as! NSDictionary)["condiciones"] as! String
+            snap.condiciones = (snapshot.value as! NSDictionary)["condicion"] as! String
             snap.herramientaID = (snapshot.value as! NSDictionary)["herramientaID"] as! String
             snap.imagenURL = (snapshot.value as! NSDictionary)["imagenURL"] as! String
             self.snaps2.append(snap)
@@ -51,6 +51,7 @@ class SubViewController: UIViewController, UITableViewDataSource, UITableViewDel
         }else{
             let snap = snaps2[indexPath.row]
             cell.textLabel?.text = snap.nombre
+            cell.detailTextLabel?.text = snap.fecha
             if snap.estado == "F"{
                 cell.backgroundColor = UIColor.cyan
             }else{

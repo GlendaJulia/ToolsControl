@@ -3,12 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		4AAD0B5B95CFF54161BEDA87 /* Pods_ToolsControl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3918E24A789BDBF72DCC19C1 /* Pods_ToolsControl.framework */; };
 		CD10264022BAF7F8000F765F /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CD10263F22BAF7F8000F765F /* Icon.png */; };
+		CD14BA4322BBCA80006C140B /* EditarUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD14BA4222BBCA80006C140B /* EditarUserViewController.swift */; };
 		CD4B9D1C22B99A4800DE0945 /* TiposViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4B9D1B22B99A4800DE0945 /* TiposViewController.swift */; };
 		CD8C5FEB22A01892002DD236 /* Snap.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8C5FEA22A01892002DD236 /* Snap.swift */; };
 		CD8C5FED22A0238E002DD236 /* SubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8C5FEC22A0238E002DD236 /* SubViewController.swift */; };
@@ -35,6 +36,7 @@
 		3918E24A789BDBF72DCC19C1 /* Pods_ToolsControl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToolsControl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		607F573A6A5C45BA12631E39 /* Pods-ToolsControl.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToolsControl.release.xcconfig"; path = "Target Support Files/Pods-ToolsControl/Pods-ToolsControl.release.xcconfig"; sourceTree = "<group>"; };
 		CD10263F22BAF7F8000F765F /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		CD14BA4222BBCA80006C140B /* EditarUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditarUserViewController.swift; sourceTree = "<group>"; };
 		CD4B9D1B22B99A4800DE0945 /* TiposViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiposViewController.swift; sourceTree = "<group>"; };
 		CD8C5FEA22A01892002DD236 /* Snap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Snap.swift; sourceTree = "<group>"; };
 		CD8C5FEC22A0238E002DD236 /* SubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubViewController.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				CD8C5FEE22A04011002DD236 /* VerPrestamoViewController.swift */,
 				CDB10F3522B7F09E003010B1 /* EmpleadoViewController.swift */,
 				CD4B9D1B22B99A4800DE0945 /* TiposViewController.swift */,
+				CD14BA4222BBCA80006C140B /* EditarUserViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD14BA4322BBCA80006C140B /* EditarUserViewController.swift in Sources */,
 				CD913039229C486D00BE7745 /* iniciarSesionViewController.swift in Sources */,
 				CD8C5FEF22A04011002DD236 /* VerPrestamoViewController.swift in Sources */,
 				CD4B9D1C22B99A4800DE0945 /* TiposViewController.swift in Sources */,

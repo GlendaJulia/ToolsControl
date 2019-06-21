@@ -33,16 +33,16 @@ class prestarViewController: UIViewController, UITableViewDataSource, UITableVie
         herramienta.cantidad = (snapshot.value as! NSDictionary)["cantidad"] as! String
         herramienta.id = snapshot.key
             if self.tipo == "btn1"{
-                if herramienta.tipo == "Tipo 1"{
+                if herramienta.tipo == "Seguridad"{
                     self.herramientas.append(herramienta)
                 }
             }else if self.tipo == "btn2"{
-                if herramienta.tipo == "Tipo 2"{
+                if herramienta.tipo == "Herramienta"{
                     self.herramientas.append(herramienta)
                 }
             }
             else if self.tipo == "btn3"{
-                if herramienta.tipo == "Tipo 3"{
+                if herramienta.tipo == "Maquina"{
                     self.herramientas.append(herramienta)
                 }
             }else{
@@ -72,12 +72,19 @@ class prestarViewController: UIViewController, UITableViewDataSource, UITableVie
         return cell
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete{
-            let herr = herramientas[indexPath.row]
+//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == .insert{
+//
+//        }
+//    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let botonInsertar = UITableViewRowAction(style: .normal, title: "Insertar")
+        { (accionesFila, indiceFila) in
+            let herr = self.herramientas[indexPath.row]
             var cant = Int(herr.cantidad)!
             if cant > 0{
-                let mensaje = ["responsable" : Auth.auth().currentUser?.email, "herramientaID" : herr.id, "nombre" : herr.nombre, "fecha":self.getDate(), "estado": "F","condiciones": "", "imagenURL":herr.imagenURL]
+                let mensaje = ["responsable" : Auth.auth().currentUser?.email, "herramientaID" : herr.id, "nombre" : herr.nombre, "fecha":self.getDate(), "estado": "F","condicion": "", "imagenURL":herr.imagenURL]
                 
                 Database.database().reference().child("usuarios").child(self.usuarioenviar).child("prestados").childByAutoId().setValue(mensaje)
                 cant = cant - 1
@@ -91,6 +98,8 @@ class prestarViewController: UIViewController, UITableViewDataSource, UITableVie
                 self.present(alerta, animated: true, completion: nil)
             }
         }
+        botonInsertar.backgroundColor = UIColor.green
+        return[botonInsertar]
     }
     
     func getDate ()->String{

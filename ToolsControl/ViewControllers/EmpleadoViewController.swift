@@ -8,18 +8,24 @@
 
 import UIKit
 import Firebase
+import SDWebImage
 
 class EmpleadoViewController: UIViewController, UITableViewDataSource, UITableViewDelegate   {
     
     @IBOutlet weak var tablePrestados: UITableView!
+    @IBOutlet weak var perfil: UIImageView!
+    @IBOutlet weak var name: UILabel!
     
     var snaps2: [Snap] = []
-    var userS = Usuario()
+    var user = Usuario()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tablePrestados.delegate = self
         tablePrestados.dataSource = self
+//        self.perfil.sd_setImage(with: URL(string: self.user.perfilURL), completed: nil)
+        
+        
         
         Database.database().reference().child("usuarios").child((Auth.auth().currentUser?.uid)!).child("prestados").observe(DataEventType.childAdded, with: { (snapshot) in
             let snap = Snap()
@@ -28,13 +34,26 @@ class EmpleadoViewController: UIViewController, UITableViewDataSource, UITableVi
             snap.id = snapshot.key
             snap.estado = (snapshot.value as! NSDictionary)["estado"] as! String
             snap.responsable = (snapshot.value as! NSDictionary)["responsable"] as! String
-            snap.condiciones = (snapshot.value as! NSDictionary)["condiciones"] as! String
+            snap.condiciones = (snapshot.value as! NSDictionary)["condicion"] as! String
             snap.herramientaID = (snapshot.value as! NSDictionary)["herramientaID"] as! String
             snap.imagenURL = (snapshot.value as! NSDictionary)["imagenURL"] as! String
             self.snaps2.append(snap)
             self.tablePrestados.reloadData()
             
         })
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        Database.database().reference().child("usuarios").child((Auth.auth().currentUser?.uid)!).child("nombres").observeSingleEvent(of: .value, with:{(snapshot) in
+            self.name.text = snapshot.value as! String
+        })
+        self.name.text = self.user.nombre
+        Database.database().reference().child("usuarios").child((Auth.auth().currentUser?.uid)!).child("imagenURL").observeSingleEvent(of: .value, with:{(snapshot) in
+            let imagenr = snapshot.value as! String
+            self.perfil.sd_setImage(with: URL(string: imagenr), completed: nil)
+        })
+        
     }
 
     @IBAction func cerrarSesion(_ sender: Any) {
@@ -63,5 +82,14 @@ class EmpleadoViewController: UIViewController, UITableViewDataSource, UITableVi
             }
         }
         return cell
+    }
+    @IBAction func editarUser(_ sender: Any) {
+        performSegue(withIdentifier: "editarUsuario2", sender: nil)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "editarUsuario2"{
+            let siguienteVC = segue.destination as! EditarUserViewController
+            siguienteVC.user = user as! Usuario
+        }
     }
 }

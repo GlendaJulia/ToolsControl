@@ -16,6 +16,7 @@ class ControlViewController: UIViewController, UITableViewDataSource, UITableVie
 
     @IBOutlet weak var tableViewRecibidos: UITableView!
     var usuarios:[Usuario] = []
+    var user = Usuario()
     
     @IBAction func cerrarSesionTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -62,7 +63,13 @@ class ControlViewController: UIViewController, UITableViewDataSource, UITableVie
         if segue.identifier == "verpersonal"{
             let siguienteVC = segue.destination as! SubViewController
             siguienteVC.userS = sender as! Usuario
+        }else if segue.identifier == "editarUsuario"{
+            let siguienteVC = segue.destination as! EditarUserViewController
+            siguienteVC.user = user as! Usuario
         }
     }
 
+    @IBAction func editarUser(_ sender: Any) {
+        performSegue(withIdentifier: "editarUsuario2", sender: nil)
+    }
 }

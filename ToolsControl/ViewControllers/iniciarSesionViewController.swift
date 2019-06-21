@@ -18,6 +18,7 @@ class iniciarSesionViewController: UIViewController {
     var mail = ""
     var pass = ""
     var tipo = ""
+    var user = Usuario()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +52,27 @@ class iniciarSesionViewController: UIViewController {
                         self.performSegue(withIdentifier: "iniciarsesionempleadosegue", sender: nil)
                     }
                 })
+                Database.database().reference().child("usuarios").child((Auth.auth().currentUser?.uid)!).child("nombres").observeSingleEvent(of: .value, with:{(snapshot) in
+                    self.user.nombre = snapshot.value as! String
+                })
+                Database.database().reference().child("usuarios").child((Auth.auth().currentUser?.uid)!).child("apellidos").observeSingleEvent(of: .value, with:{(snapshot) in
+                    self.user.apellido = snapshot.value as! String
+                })
+                Database.database().reference().child("usuarios").child((Auth.auth().currentUser?.uid)!).child("ocupacion").observeSingleEvent(of: .value, with:{(snapshot) in
+                    self.user.ocupacion = snapshot.value as! String
+                })
+                Database.database().reference().child("usuarios").child((Auth.auth().currentUser?.uid)!).child("edad").observeSingleEvent(of: .value, with:{(snapshot) in
+                    self.user.edad = snapshot.value as! String
+                })
+                Database.database().reference().child("usuarios").child((Auth.auth().currentUser?.uid)!).child("DNI").observeSingleEvent(of: .value, with:{(snapshot) in
+                    self.user.dni = snapshot.value as! String
+                })
+                Database.database().reference().child("usuarios").child((Auth.auth().currentUser?.uid)!).child("imagenURL").observeSingleEvent(of: .value, with:{(snapshot) in
+                    self.user.perfilURL = snapshot.value as! String
+                })
+                Database.database().reference().child("usuarios").child((Auth.auth().currentUser?.uid)!).child("imagenID").observeSingleEvent(of: .value, with:{(snapshot) in
+                    self.user.perfilID = snapshot.value as! String
+                })
             }
         }
     }
@@ -59,8 +81,17 @@ class iniciarSesionViewController: UIViewController {
             let registerVC = segue.destination as! RegisterViewController
             registerVC.email = self.emailTextField.text!
             registerVC.password = self.passwordTextField.text!
+        }else if segue.identifier == "iniciarsesionadminsegue"{
+            if let navigationController = segue.destination as? UINavigationController {
+                let childViewController = navigationController.topViewController as? ControlViewController
+                childViewController?.user = user as! Usuario
+            }
+        }else if segue.identifier == "iniciarsesionempleadosegue"{
+            if let navigationController = segue.destination as? UINavigationController {
+                let childViewController = navigationController.topViewController as? EmpleadoViewController
+                childViewController?.user = user as! Usuario
+            }
         }
     }
 }
 
-// LAB 11 PAG.18

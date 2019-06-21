@@ -56,6 +56,7 @@ class ListaHerramientasViewController: UIViewController, UITableViewDataSource, 
         }else{
             let herr = herramientas[indexPath.row]
             cell.textLabel?.text = herr.nombre
+            cell.detailTextLabel?.text = herr.cantidad
             cell.imageView?.sd_setImage(with: URL(string: herr.imagenURL), completed: nil)
         }
         return cell
